@@ -14,7 +14,7 @@ const acervo = [{
         id:03,
         titulo:"1948",
         autor:"george orwell",
-        disponivel:True,
+        disponivel:true,
     },
     {
         id:04,
@@ -30,8 +30,29 @@ const acervo = [{
     }
 
 ];
-const listarTodosOsLivros = async () => {
+
+
+const listarTodosOsLivros = () => {
 return acervo;
+};
+
+const buscarLivroPorId = async (id)=> {
+const livro = acervo.find((l) => l.id === number (id));
+return livro|| null;
+};
+
+const criarlivro = async ({titulo, autor}) => {
+    if (!titulo|| !autor) {
+    throw new Error('titulo e autor são obrigatórios');
+    }
+    const novolivro = {
+        id: acervo.length +1,
+        titulo,
+        autor,
+        disponivel: true,
+    };
+    acervo.push(novolivro);
+    return novolivro;
 };
 
 module.exports = {listarTodosOsLivros};
