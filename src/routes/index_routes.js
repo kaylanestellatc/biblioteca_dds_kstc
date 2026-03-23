@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const livrosRoutes = require('./src/routes/index_routes');
+const livrosRoutes = require('./src/routes/livros_routes');
 
 router.use('/livros', livrosRoutes);
 
@@ -14,15 +14,3 @@ res
 });});
 
 module.exports = router;
-
-//const app = express();
-
-//app.use(express.json());
-
-//app.use('/livros', livrosRoutes);
-
-//const PORT = 3000;
-
-//app.listen((PORT), () => {
-   // console.log(`[SERVIDOR] biblioteca ondeline em http://localhost:${PORT}`);
-//});
