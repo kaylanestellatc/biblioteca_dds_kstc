@@ -1,28 +1,18 @@
 const express = require('express');
-const router = express.Router();
-const livrosRoutes = require('./src/routes/index_routes');
+const routes = require('./src/routes/index.routes');
+const app = express();
 
-router.use('/livros', livrosRoutes);
+app.use(express.json());
 
-router.get?('/', (req,res) =>{
-    res.json({ sistema: 'biblioteca DdS luciano', status:'online'
-    });});
-router.use((req,res)=>{
-res
-.status(404)
-.json({ erro:'rota nao encontrada na biblioteca DdS luciano'
-});});
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
 
-module.exports = router;
+// Utilizando as rotas
+app.use(routes);
 
-//const app = express();
-
-//app.use(express.json());
-
-//app.use('/livros', livrosRoutes);
-
-//const PORT = 3000;
-
-//app.listen((PORT), () => {
-   // console.log(`[SERVIDOR] biblioteca ondeline em http://localhost:${PORT}`);
-//});
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`[SERVIDOR]: Biblioteca online em http://localhost:${PORT}`);
+});
