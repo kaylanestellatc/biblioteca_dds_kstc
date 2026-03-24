@@ -27,4 +27,19 @@ const criarUsuario = async (req, res) => {
   }
 };
 
-module.exports = { listarUsuarios, criarUsuario };
+const atualizarUsuarios = async (req,res) => {
+  const {id, nome, email} = req.body;
+   const usuarios = await usuariosService.listarTodosUsuarios
+   let usuarios = usuarios[id];
+usuarios.nome = nome;
+usuario.email=email;
+
+const success = await usuariosService.atualizarUsuarios(usuarios);
+if (success){
+  res.status(201).json({success: true})
+}else{
+  res.status(500).json({success: false});
+}
+  }
+
+module.exports = { listarUsuarios, criarUsuario, atualizarUsuarios };

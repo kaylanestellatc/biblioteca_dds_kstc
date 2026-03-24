@@ -27,12 +27,12 @@ const acervo = [{
         titulo:"senhor dos aneis",
         autor:"tolkien",
         disponivel:true,
-    }
+    },
 
 ];
 
 
-const listarTodosOsLivros = () => {
+const listarTodosOsLivros = async() => {
 return acervo;
 };
 
@@ -55,4 +55,4 @@ const criarlivro = async ({titulo, autor}) => {
     return novolivro;
 };
 
-module.exports = {listarTodosOsLivros};
+module.exports = { listarTodosLivros, buscarLivroPorId, criarLivro };
