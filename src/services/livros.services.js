@@ -1,3 +1,6 @@
+// SERVICE: Aqui mora a lógica de negócio da aplicação.
+// Esta camada não conhece Express, não conhece req, não conhece res.
+// Simulação do acervo — em breve será uma query no Postgres
 const acervo = [
   {
     id: 1,
@@ -26,7 +29,7 @@ const listarTodosLivros = async () => {
 
 // Busca um livro específico pelo ID
 const buscarLivroPorId = async (id) => {
-  const livro = acervo.find((l) => l.id === Number(id));
+  const livro = acervo.find((item) => item.id === Number(id));
   // Regra de negócio: se não existe, retorna null.
   // O Controller decide o que fazer com o null.
   return livro || null;

@@ -1,9 +1,13 @@
-const livrosService = require('../services/livros.services');
+// CONTROLLER: Coordena a comunicação entre a Rota e o Service.
+// Extrai dados do req, chama o Service e formata a resposta com res.
+// Nunca contém regra de negócio — apenas orquestração.
+
+const livroService = require('../services/livro.service');
 
 // GET /livros — Lista todos os livros
 const listarLivros = async (req, res) => {
   try {
-    const livros = await livrosService.listarTodosLivros();
+    const livros = await livroService.listarTodosLivros();
     res.status(200).json({ total: livros.length, livros });
   } catch (erro) {
     res.status(500).json({ erro: 'Erro interno ao listar livros.' });
@@ -15,7 +19,7 @@ const buscarLivroPorId = async (req, res) => {
   try {
     // Extrai o parâmetro da URL — essa é a responsabilidade do Controller
     const { id } = req.params;
-    const livro = await livrosService.buscarLivroPorId(id);
+    const livro = await livroService.buscarLivroPorId(id);
 
     // Se o Service retornou null, o livro não existe
     if (!livro) {
@@ -35,7 +39,7 @@ const criarLivro = async (req, res) => {
   try {
     // Extrai os dados do corpo da requisição
     const { titulo, autor } = req.body;
-    const novoLivro = await livrosService.criarLivro({ titulo, autor });
+    const novoLivro = await livroService.criarLivro({ titulo, autor });
 
     // 201 = Created — status correto para criação bem-sucedida
     res.status(201).json({

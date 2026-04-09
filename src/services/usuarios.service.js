@@ -21,6 +21,12 @@ const listarTodosUsuarios = async () => {
   return usuarios;
 };
 
+// Busca um usuario específico pelo ID
+const buscarUsuarioPorId = async (id) => {
+  const usuario = usuarios.find((item) => item.id === Number(id));
+  return usuario || null;
+};
+
 // Criar um novo usuario
 const criarUsuario = async ({ nome, email }) => {
   if (!nome || !email) {
@@ -34,10 +40,5 @@ const criarUsuario = async ({ nome, email }) => {
   usuarios.push(novoUsuario);
   return novoUsuario;
 };
-const atualizarUsuarios = async(usuarios) =>{
-  const id= usuaios.id;
-  usuarios[id] = usuario;
-  return true;
-}
 
-module.exports = { listarTodosUsuarios, criarUsuario, atualizarUsuarios };
+module.exports = { listarTodosUsuarios, buscarUsuarioPorId, criarUsuario };
