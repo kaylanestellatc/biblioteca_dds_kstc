@@ -1,7 +1,7 @@
-const logger = require('./logger.middleware');
-const autenticar = require('./auth.middleware');
-const errorHandler = require('./errorHandler.middleware');
-const validarContentType = require('./contentType.middleware');
+const logger = require('./logger.middlewares');
+const autenticar = require('./auth.middlewares');
+const errorHandler = require('./errorHandle.middlewares');
+const validarContentType = require('./contentType.middlewares');
 
 module.exports = {
   logger,

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 // Importação das Rotas
-const livroRoute = require('./livro.route');
-const usuarioRoute = require('./usuario.route');
+const livroRoute = require('./livros.routes');
+const usuarioRoute = require('./usuarios.routes');
 // Importação Seletiva de Middlewares
-const { autenticar, validarContentType } = require('../middlewares/main.middleware');
+const { autenticar, validarContentType } = require('../middlewares/main.middlewares');
 
 // 1. Rota Raiz (Totalmente Pública)
 router.get('/', (req, res) => {

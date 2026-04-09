@@ -2,7 +2,7 @@
 // Extrai dados do req, chama o Service e formata a resposta com res.
 // Nunca contém regra de negócio — apenas orquestração.
 
-const livroService = require('../services/livro.service');
+const livroService = require('../services/livros.services');
 
 // GET /livros — Lista todos os livros
 const listarLivros = async (req, res) => {
